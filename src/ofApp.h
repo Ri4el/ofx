@@ -23,7 +23,7 @@ class ofApp : public ofBaseApp{
         
         void renderCA();
         void renderRmsDrawer();
-        
+        void renderSoundPolyLine();
         
         maxiFFT fft;
         maxiFFTOctaveAnalyzer oct;
@@ -33,6 +33,8 @@ class ofApp : public ofBaseApp{
     
         ofFbo fb1;
         ofFbo fb2;
+        ofFbo fb3;
+        
         ofBlendMode blend_mode;
         bool is_debug_on;
         int border_width;

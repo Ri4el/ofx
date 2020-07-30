@@ -48,6 +48,7 @@ void ofApp::setup(){
     //allocate and clean framebuffers
     fb1.allocate(ofGetWidth()-border_width*2, ofGetHeight()-border_width*2, GL_RGBA, 8); //MSAA x8
     fb2.allocate(ofGetWidth()-border_width*2, ofGetHeight()-border_width*2, GL_RGBA, 8); //MSAA x8
+    fb3.allocate(ofGetWidth()-border_width*2, ofGetHeight()-border_width*2, GL_RGBA, 8);
     
     fb1.begin();
         ofClear(255, 255, 255, 0);
@@ -57,16 +58,23 @@ void ofApp::setup(){
         ofClear(255, 255, 255, 0);
     fb2.end();
     
+    fb3.begin();
+        ofClear(255, 255, 255, 0);
+    fb3.end();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-//    fb1.begin();
-//        renderRmsDrawer();
-//    fb1.end();
-//    fb2.begin();
-//        renderCA();
-//    fb2.end();
+    fb1.begin();
+        renderRmsDrawer();
+    fb1.end();
+    fb2.begin();
+        renderCA();
+    fb2.end();
+    fb3.begin();
+        renderSoundPolyLine();
+    fb3.end();
 }
 
 //--------------------------------------------------------------
@@ -74,11 +82,12 @@ void ofApp::draw(){
     
     ofBackground(0);
     
-//    ofEnableBlendMode(blend_mode);
-//    fb1.draw(border_width, border_width);
-//    fb2.draw(border_width, border_width);
-//    ofDisableBlendMode();
-    sound_poly.render();
+    ofEnableBlendMode(blend_mode);
+    fb1.draw(border_width, border_width);
+    fb2.draw(border_width, border_width);
+    fb3.draw(border_width, border_width);
+    ofDisableBlendMode();
+    
     //PRESS D TO ENABLE DEBUG
     if (is_debug_on) {
         debugPanelDraw();
@@ -178,6 +187,13 @@ inline void ofApp::renderCA() {
 //--------------------------------------------------------------
 inline void ofApp::renderRmsDrawer() {
     rms_drawer.render();
+}
+
+inline void ofApp::renderSoundPolyLine() {
+    ofPushMatrix();
+    ofTranslate(ofGetWidth()/2-border_width, ofGetHeight()/2-border_width); //look at FBO size to translate accurately
+    sound_poly.render();
+    ofPopMatrix();
 }
 //--------------------------------------------------------------
 inline void ofApp::debugPanelDraw() {
