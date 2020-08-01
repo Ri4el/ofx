@@ -1,5 +1,17 @@
 #include "ofApp.h"
 
+extern vector<float> l_buff;
+extern vector<float> r_buff;
+extern ofSoundStream sound_stream;
+extern float rms;
+extern float lpeak;
+extern float rpeak;
+extern int buffer_counter;
+extern int sample_rate;
+extern int fft_size;
+extern int n_bands;
+extern int buffer_size;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetVerticalSync(true); //VSYNC
@@ -26,7 +38,7 @@ void ofApp::setup(){
     oct.setup(sample_rate, 1024, n_bands);
     
     ofSoundStreamSettings settings;
-    settings.setInDevice(devices[2]);
+    settings.setInDevice(devices[0]);
     settings.setInListener(this);
     settings.sampleRate = 44100;
     settings.numOutputChannels = 0;
