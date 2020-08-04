@@ -16,7 +16,11 @@ void ofApp::setup(){
     r_buff.assign(buffer_size, 0);
     rms = 0.0;
     buffer_counter = 0.0;
-    vector<ofSoundDevice> devices = sound_stream.getDeviceList();
+    
+    //by name
+    auto devices = sound_stream.getMatchingDevices("Soundflower", 2, 2);
+    //by index
+    //vector<ofSoundDevice> devices = sound_stream.getDeviceList();
     
     sample_rate = 44100;
     ofxMaxiSettings::setup(sample_rate, 2, buffer_size);
@@ -26,7 +30,12 @@ void ofApp::setup(){
     oct.setup(sample_rate, 1024, n_bands);
     
     ofSoundStreamSettings settings;
-    settings.setInDevice(devices[2]);
+    //by name
+    if(!devices.empty()){
+        settings.setInDevice(devices[0]);
+    }
+    //by index
+    //settings.setInDevice(devices[2]);
     settings.setInListener(this);
     settings.sampleRate = 44100;
     settings.numOutputChannels = 0;
@@ -35,7 +44,7 @@ void ofApp::setup(){
     
     sound_stream.setup(settings);
     
-    getSoundStreamInfo(sound_stream);
+    getSoundStreamInfo(sound_stream, devices[0]);
     
     //init automaton
     automaton = new CA(70, 7, n_bands);
@@ -145,9 +154,12 @@ void ofApp::audioIn(ofSoundBuffer & input) {
     ++buffer_counter;
 }
 //--------------------------------------------------------------
-inline void ofApp::getSoundStreamInfo(ofSoundStream &input) {
+inline void ofApp::getSoundStreamInfo(ofSoundStream &input, ofSoundDevice &dev) {
     std::cout << "######################" << std::endl;
     std::cout << "SOUND STREAM DATA" << std::endl;
+    std::cout << "name: " + dev.name << std::endl;
+    std::cout << "In: " + ofToString(dev.inputChannels) << std::endl;
+    std::cout << "Out: " + ofToString(dev.outputChannels) << std::endl;
     std::cout << "Buffer size: " << input.getBufferSize() << std::endl;
     std::cout << "Input channels: " << input.getNumInputChannels() << std::endl;
     std::cout << "Output channels: " << input.getNumOutputChannels() << std::endl;

@@ -18,7 +18,7 @@ class ofApp : public ofBaseApp{
         void debugPanelDraw();
     
         void audioIn(ofSoundBuffer & input);
-        void getSoundStreamInfo(ofSoundStream &input);
+        void getSoundStreamInfo(ofSoundStream &input, ofSoundDevice &dev);
         float getPeakValue(vector<float>& buff);
         
         void renderCA();

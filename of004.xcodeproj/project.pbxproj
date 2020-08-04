@@ -781,8 +781,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
+					"$(OF_PATH)/addons/ofxMaxim/libs",
+					"$(OF_PATH)/addons/ofxMaxim/src",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -885,8 +885,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
+					"$(OF_PATH)/addons/ofxMaxim/libs",
+					"$(OF_PATH)/addons/ofxMaxim/src",
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -915,8 +915,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
+					"$(OF_PATH)/addons/ofxMaxim/libs",
+					"$(OF_PATH)/addons/ofxMaxim/src",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
