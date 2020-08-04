@@ -3,8 +3,8 @@
 #include "ofMain.h"
 #include "RmsDrawer.h"
 #include "ofxMaxim.h"
-#include "CA.h"
-#include "soundPolyLine.h"
+#include "CellularAutomaton.h"
+#include "SoundPolyLine.h"
 
 class ofApp : public ofBaseApp{
 
@@ -27,9 +27,9 @@ class ofApp : public ofBaseApp{
         
         maxiFFT fft;
         maxiFFTOctaveAnalyzer oct;
-        CA* automaton;
+        CellularAutomaton* automaton;
         RmsDrawer rms_drawer;
-        soundPolyLine sound_poly;
+        SoundPolyLine sound_poly;
     
         ofFbo fb1;
         ofFbo fb2;
