@@ -1,10 +1,3 @@
-//
-//  soundPolyLine.hpp
-//  of004
-//
-//  Created by Gabriele on 28/07/2020.
-//
-
 #ifndef soundPolyLine_h
 #define soundPolyLine_h
 

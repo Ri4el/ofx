@@ -1,8 +1,3 @@
-//
-//  CA.cpp
-//  of002
-//
-
 #include <stdio.h>
 #include "CellularAutomaton.h"
 #include "ofApp.h"

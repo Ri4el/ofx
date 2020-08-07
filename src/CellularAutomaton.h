@@ -1,8 +1,3 @@
-//
-//  CA.h
-//  of002
-//
-
 #ifndef CA_h
 #define CA_h
 

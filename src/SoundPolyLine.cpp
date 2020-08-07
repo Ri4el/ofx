@@ -27,18 +27,18 @@ void SoundPolyLine::render() {
                 float b = sin(ang_step*i);
                 if (abs(a) < 1e-3) a = 0;
                 if (abs(b) < 1e-3) b = 0;
-                ofVertex(a * ((buff[i]) * 100 + c / 10 + (x * 50)),
-                         b * ((buff[i]) * 100 + c / 10 + (x * 50)));
+                ofVertex(a * ((buff[i]) * 100 + c / 15 + (x * 50)),
+                         b * ((buff[i]) * 100 + c / 15 + (x * 50)));
             }
-            ofVertex(cos(ang_step * 256) * (buff[255] * 100 + c / 10 + (x * 50)),
-                     sin(ang_step * 256) * (buff[255] * 100 + c / 10 + (x * 50)));
+            ofVertex(cos(ang_step * 256) * (buff[255] * 100 + c / 15 + (x * 50)),
+                     sin(ang_step * 256) * (buff[255] * 100 + c / 15 + (x * 50)));
             ofEndShape();
         }
         
     }
 }
 
-void soundPolyLine::enqueue() {
+void SoundPolyLine::enqueue() {
     vector<float> tmp = r_buff;
     transform(l_buff.begin(), l_buff.end(), r_buff.begin(), tmp.begin(), plus<float>());
     _q.push(tmp);
